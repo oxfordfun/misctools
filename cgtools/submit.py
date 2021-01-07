@@ -18,13 +18,13 @@ def submit_job(name, script, mem, work_dir):
              "mem": mem,
              "work_dir": work_dir }
     ret = requests.post("http://127.0.0.1:6000/submit", json=data)
-    print(ret.text)
+    print("catgrid said ", ret.text)
     
 def main(process_name, filenames=[]):
     work_dir = os.getcwd()
     for filename in filenames:
         name, script = get_script(process_name, filename)
-        mem = 4
+        mem = 4096
         submit_job(name, script, mem, work_dir)
         print(name)
         print(script)
