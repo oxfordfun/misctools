@@ -12,6 +12,11 @@ rm {sample_name}.qsort.bam
 """
         return process_name, process_script
 
+    if process_name == 'gzip':
+        process_name = f"gzip_{filename}"
+        process_script = f"gzip {filename}"
+        return process_name, process_script
+
 def submit_job(name, script, mem, work_dir):
     data = { "name": name,
              "script": script,
